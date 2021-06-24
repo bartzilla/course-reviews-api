@@ -1,14 +1,14 @@
-com/bartzilla/review/Review.java
- com.bartzilla.review.Review
-com/bartzilla/course/CourseRepository.java
- com.bartzilla.course.CourseRepository
-com/bartzilla/core/BaseEntity.java
- com.bartzilla.core.BaseEntity
-com/bartzilla/review/ReviewRepository.java
- com.bartzilla.review.ReviewRepository
 com/bartzilla/core/DataBaseLoader.java
  com.bartzilla.core.DataBaseLoader
+com/bartzilla/course/CourseRepository.java
+ com.bartzilla.course.CourseRepository
 com/bartzilla/Application.java
  com.bartzilla.Application
+com/bartzilla/review/ReviewRepository.java
+ com.bartzilla.review.ReviewRepository
+com/bartzilla/review/Review.java
+ com.bartzilla.review.Review
+com/bartzilla/core/BaseEntity.java
+ com.bartzilla.core.BaseEntity
 com/bartzilla/course/Course.java
  com.bartzilla.course.Course
