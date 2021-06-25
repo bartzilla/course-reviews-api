@@ -15,7 +15,5 @@ public class RestConfig extends RepositoryRestConfigurerAdapter {
     public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
         validatingListener.addValidator("beforeCreate", validator);
         validatingListener.addValidator("beforeSave", validator);
-
-
     }
 }

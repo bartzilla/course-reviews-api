@@ -2,6 +2,7 @@ package com.bartzilla.review;
 
 import com.bartzilla.core.BaseEntity;
 import com.bartzilla.course.Course;
+import com.bartzilla.user.User;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -13,6 +14,8 @@ public class Review extends BaseEntity {
     private String description;
     @ManyToOne
     private Course course;
+    @ManyToOne
+    private User reviewer;
 
     protected Review() {
         super();
@@ -47,4 +50,11 @@ public class Review extends BaseEntity {
         this.course = course;
     }
 
+    public User getReviewer() {
+        return reviewer;
+    }
+
+    public void setReviewer(User reviewer) {
+        this.reviewer = reviewer;
+    }
 }
