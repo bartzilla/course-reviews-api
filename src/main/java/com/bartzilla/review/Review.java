@@ -1,20 +1,15 @@
 package com.bartzilla.review;
 
+import com.bartzilla.core.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long id;
+public class Review extends BaseEntity{
     private int rating;
     private String description;
 
-    protected Review() {
-        id = null;
+    protected Review(){
+        super();
     }
 
     public int getRating() {

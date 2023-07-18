@@ -1,4 +1,4 @@
-package com.bartzilla.coursereviewsapi;
+package com.bartzilla;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

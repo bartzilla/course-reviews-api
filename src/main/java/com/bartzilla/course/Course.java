@@ -1,24 +1,19 @@
 package com.bartzilla.course;
 
+import com.bartzilla.core.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long id;
+public class Course extends BaseEntity {
+
     private String title;
     private String url;
 
     protected Course() {
-        id = null;
+        super();
     }
 
     public Course(String title, String url) {
-        this();
         this.title = title;
         this.url = url;
     }
