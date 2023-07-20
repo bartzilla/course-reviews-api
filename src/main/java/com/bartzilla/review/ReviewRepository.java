@@ -1,6 +1,5 @@
 package com.bartzilla.review;
 
-import com.bartzilla.course.Course;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
