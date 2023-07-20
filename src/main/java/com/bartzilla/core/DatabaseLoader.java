@@ -28,32 +28,33 @@ public class DatabaseLoader implements ApplicationRunner {
         courses.save(course);
 
         String[] templates = {
-                "Up and running with %s",
-                "%s Basics",
-                "%s for beginners",
-                "%s for Neckbeards",
-                "Under the hood: %s"
+            "Up and running with %s",
+            "%s Basics",
+            "%s for beginners",
+            "%s for Neckbeards",
+            "Under the hood: %s"
         };
 
         String[] buzzwords = {
-                "Spring REST Data",
-                "Java 9",
-                "Scala",
-                "Go",
-                "Svelte"
+            "Spring REST Data",
+            "Java 9",
+            "Scala",
+            "Go",
+            "Svelte",
+            "Spring HATEOS"
         };
 
         List<Course> bunchOfCourses = new ArrayList<>();
 
         IntStream.range(0, 100)
-                .forEach(i -> {
-                    String template = templates[i % templates.length];
-                    String buzzword = buzzwords[i % buzzwords.length];
-                    String title = String.format(template, buzzword);
-                    Course c = new Course(title, "https://example.com");
-                    c.addReview(new Review(i % 5, String.format("Moar %s please!!!", buzzword)));
-                    bunchOfCourses.add(c);
-                });
+            .forEach(i -> {
+                String template = templates[i % templates.length];
+                String buzzword = buzzwords[i % buzzwords.length];
+                String title = String.format(template, buzzword);
+                Course c = new Course(title, "https://example.com");
+            c.addReview(new Review(i % 5, String.format("Moar %s please!!!", buzzword)));
+                bunchOfCourses.add(c);
+            });
         courses.saveAll(bunchOfCourses);
     }
 }
