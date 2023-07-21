@@ -5,6 +5,8 @@ import com.bartzilla.review.Review;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 @Entity
 public class Course extends BaseEntity {
 
+    @NotNull
+    @Size(min = 2, max = 140)
     private String title;
     private String url;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
