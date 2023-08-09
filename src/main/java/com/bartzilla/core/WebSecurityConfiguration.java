@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class WebSecurityConfiguration  {
@@ -23,29 +22,30 @@ public class WebSecurityConfiguration  {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user1 = User.builder()
-                .username("mike")
-                .password(encoder().encode("important"))
-                .roles("CAPTAIN", "CREW")
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(encoder().encode("password"))
+                .roles("ADMIN", "USER")
                 .build();
-        UserDetails user2 = User.builder()
-                .username("henrik")
-                .password(encoder().encode("important"))
-                .roles("CREW")
+        UserDetails user = User.builder()
+                .username("user")
+                .password(encoder().encode("password"))
+                .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(user1, user2);
+        return new InMemoryUserDetailsManager(admin, user);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .cors().and()
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/**").hasAnyRole("CAPTAIN", "CREW")
-                        .anyRequest().authenticated()
-                )
-                .httpBasic(Customizer.withDefaults());
-        return http.build();
+        return http
+                .csrf(csrf -> csrf.disable())
+                .authorizeRequests(auth -> {
+                    auth.requestMatchers("/").permitAll();
+                    auth.requestMatchers("/user").hasRole("USER");
+                    auth.requestMatchers("/admin").hasRole("ADMIN");
+                })
+                .httpBasic(Customizer.withDefaults())
+                .build();
     }
+
 }
