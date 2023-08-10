@@ -31,7 +31,7 @@ public class User extends BaseEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = PASSWORD_ENCODER.encode(password);
     }
 
     public String getFirstName() {

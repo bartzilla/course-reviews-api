@@ -17,6 +17,9 @@ import java.util.stream.IntStream;
 
 @Component
 public class DatabaseLoader implements ApplicationRunner {
+    private static final String ROLE_USER = "USER";
+    private static final String ROLE_ADMIN = "ADMIN";
+
     private final CourseRepository courses;
     private final UserRepository users;
 
@@ -50,22 +53,22 @@ public class DatabaseLoader implements ApplicationRunner {
         };
 
         List<User> students = Arrays.asList(
-                new User("jacobproffer", "Jacob",  "Proffer", "password", new String[] {"ROLE_USER"}),
-                new User("mlnorman", "Mike",  "Norman", "password", new String[] {"ROLE_USER"}),
-                new User("k_freemansmith", "Karen",  "Freeman-Smith", "password", new String[] {"ROLE_USER"}),
-                new User("seth_lk", "Seth",  "Kroger", "password", new String[] {"ROLE_USER"}),
-                new User("mrstreetgrid", "Java",  "Vince", "password", new String[] {"ROLE_USER"}),
-                new User("anthonymikhail", "Tony",  "Mikhail", "password", new String[] {"ROLE_USER"}),
-                new User("boog690", "AJ",  "Teacher", "password", new String[] {"ROLE_USER"}),
-                new User("faelor", "Erik",  "Faelor Shafer", "password", new String[] {"ROLE_USER"}),
-                new User("christophernowack", "Christopher",  "Nowack", "password", new String[] {"ROLE_USER"}),
-                new User("calebkleveter", "Caleb",  "Kleveter", "password", new String[] {"ROLE_USER"}),
-                new User("richdonellan", "Rich",  "Donnellan", "password", new String[] {"ROLE_USER"}),
-                new User("albertqerimi", "Albert",  "Qerimi", "password", new String[] {"ROLE_USER"})
+                new User("jacobproffer", "Jacob",  "Proffer", "password", new String[] {ROLE_USER}),
+                new User("mlnorman", "Mike",  "Norman", "password", new String[] {ROLE_USER}),
+                new User("k_freemansmith", "Karen",  "Freeman-Smith", "password", new String[] {ROLE_USER}),
+                new User("seth_lk", "Seth",  "Kroger", "password", new String[] {ROLE_USER}),
+                new User("mrstreetgrid", "Java",  "Vince", "password", new String[] {ROLE_USER}),
+                new User("anthonymikhail", "Tony",  "Mikhail", "password", new String[] {ROLE_USER}),
+                new User("boog690", "AJ",  "Teacher", "password", new String[] {ROLE_USER}),
+                new User("faelor", "Erik",  "Faelor Shafer", "password", new String[] {ROLE_USER}),
+                new User("christophernowack", "Christopher",  "Nowack", "password", new String[] {ROLE_USER}),
+                new User("calebkleveter", "Caleb",  "Kleveter", "password", new String[] {ROLE_USER}),
+                new User("richdonellan", "Rich",  "Donnellan", "password", new String[] {ROLE_USER}),
+                new User("albertqerimi", "Albert",  "Qerimi", "password", new String[] {ROLE_USER})
         );
 
         users.saveAll(students);
-        users.save(new User("bartzilla", "Cipriano", "Sanchez", "12345", new String[]{"ROLES_USER", "ROLE_ADMIN"}));
+        users.save(new User("bartzilla", "Cipriano", "Sanchez", "password", new String[]{ROLE_USER, ROLE_ADMIN}));
 
         List<Course> bunchOfCourses = new ArrayList<>();
 

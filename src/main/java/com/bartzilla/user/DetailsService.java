@@ -7,11 +7,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class DetailsService implements UserDetailsService
 {
-
-    //@Autowired
+    @Autowired
     UserRepository users;
 
     @Override
@@ -22,11 +21,11 @@ public class DetailsService implements UserDetailsService
             throw new UsernameNotFoundException(username + " was not found");
         }
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
-                AuthorityUtils.createAuthorityList(user.getRoles())
-        );
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .roles(user.getRoles())
+                .build();
     }
 
 }
