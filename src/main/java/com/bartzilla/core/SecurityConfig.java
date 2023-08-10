@@ -34,8 +34,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> {
                     auth.requestMatchers("/").permitAll();
-                    auth.requestMatchers("/user").hasRole("USER");
-                    auth.requestMatchers("/admin").hasRole("ADMIN");
+                    auth.requestMatchers("/api/v1/courses").hasRole("USER");
+                    auth.requestMatchers("/api/v1/reviews").hasRole("ADMIN");
                 })
                 .httpBasic(Customizer.withDefaults())
                 .build();
