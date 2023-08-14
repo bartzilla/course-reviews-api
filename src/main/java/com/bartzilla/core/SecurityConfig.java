@@ -21,8 +21,6 @@ public class SecurityConfig {
 
     @Autowired
     UserDetailsService users;
-
-
 //    @Bean
 //    public InMemoryUserDetailsManager userDetailsManager() {
 //        UserDetails admin = User.withDefaultPasswordEncoder()
@@ -59,7 +57,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> {
                     auth.requestMatchers("/").permitAll();
                     auth.requestMatchers("/api/v1/courses").hasRole("USER");
-                    auth.requestMatchers("/api/v1/reviews").hasRole("ADMIN");
+                    auth.requestMatchers("/api/v1/reviews").hasRole("USER");
                 })
                 .httpBasic(Customizer.withDefaults())
                 .build();
